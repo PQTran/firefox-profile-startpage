@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Firefox Startpage</title>
+    <link rel="stylesheet" href="css/fontawesome-all.css" />
+    <link rel="icon" href="img/logo.png" />
+  </head>
+
+  <body>
+    <style>
+      @font-face {
+          font-family: Cinzel;
+          src: url("webfonts/Cinzel-Regular.ttf");
+      }
+
+      html, body {
+          background:##f9f9fa;
+          margin:0;
+          padding:0;
+          min-width: 565px;
+      }
+
+      .white i {color: #cccccc;}
+      .gray i {color: #515151;}
+      .darkGray i {color: #393939;}
+      .lightGray i {color: #999999;}
+      .red i {color: #f2777a;}
+      .orange i {color: #f99157;}
+      .yellow i {color: #ffcc66;}
+      .green i {color: #99cc99;}
+      .aqua i {color: #66cccc;}
+      .blue i {color: #6699cc;}
+      .purple i {color: #cc99cc;}
+      .gradient i {background: linear-gradient(#e66465, #9198e5); -webkit-background-clip: text; opacity: 0.8;}
+
+      #canvas {
+          display: flex;
+          flex-direction: column;
+          padding-bottom: 50px;
+      }
+
+      .sectionRow {
+          display: flex;
+          justify-content: safe center;
+          flex-wrap: wrap;
+          text-align: center;
+      }
+
+      .headerRow {
+          font-family: Cinzel;
+          font-size: 50px;
+          text-align: center;
+          margin-top: 50px;
+      }
+
+      .profilePanel {
+          display: inline-block;
+          margin: 0 30px;
+      }
+
+      .icon {
+          cursor: pointer;
+          font-size: 90px;
+          color:rgba(0,0,0,0);
+          filter:grayscale(0%);
+      }
+      .icon:not(:hover) {
+          opacity: 0.5;
+          transition: opacity 1s;
+          /* filter:grayscale(100%); */
+      }
+
+      .fas.fa-vial {
+          transform: rotate(-20deg);
+      }
+    </style>
+
+    <div id="canvas">
+
+      <div class="headerRow">
+        <span>
+          <i class="fas fa-star"></i>
+          <text>Favourites</text>
+        </span>
+      </div>
+
+      <div class="sectionRow">
+        <div class="profilePanel">
+          <a class="orange icon" onclick="launch('default')">
+            <i class="fab fa-firefox-browser"></i>
+          </a>
+          <br>
+          <text>General</text>
+        </div>
+
+        <div class="profilePanel">
+          <a class="blue icon" onclick="launch('Chinese')">
+            <i class="fas fa-comment-dots"></i>
+          </a>
+          <br>
+          <text>Chinese</text>
+        </div>
+
+      </div>
+
+      <div class="headerRow">
+        <span>
+          <i class="far fa-star"></i>
+          Projects
+        </span>
+      </div>
+
+      <div class="sectionRow">
+        <div class="profilePanel">
+          <a class="purple icon" onclick="launch('Emacs')">
+            <i class="fas fa-dove"></i>
+          </a>
+          <br>
+          <text>Emacs</text>
+        </div>
+
+        <div class="profilePanel">
+          <a class="lightGray icon" onclick="launch('Rust')">
+            <i class="fab fa-rust"></i>
+          </a>
+          <br>
+          <text>Rust</text>
+        </div>
+
+        <div class="profilePanel">
+          <a class="green icon" onclick="launch('Project firefox-profile-startpage')">
+            <i class="fab fa-node-js"></i>
+          </a>
+          <br>
+          <text>Nodejs</text>
+        </div>
+
+        <div class="profilePanel">
+          <a class="red icon" onclick="launch('Jekyll')">
+            <i class="fas fa-vial"></i>
+          </a>
+          <br>
+          <text>Jekyll</text>
+        </div>
+
+        <div class="profilePanel">
+          <a class="aqua icon" onclick="launch('Docker')">
+            <i class="fas fa-fish"></i>
+          </a>
+          <br>
+          <text>Docker</text>
+        </div>
+
+      </div>
+
+      <div class="headerRow">
+        <span>
+          <i class="far fa-star"></i>
+          Others
+        </span>
+      </div>
+
+      <div class="sectionRow">
+
+        <div class="profilePanel">
+          <a class="yellow icon" onclick="launch('Cooking')">
+            <i class="fas fa-ice-cream"></i>
+          </a>
+          <br>
+          <text>Cooking</text>
+        </div>
+
+        <div class="profilePanel">
+          <a class="gradient icon" onclick="launch('Linux')">
+            <i class="fab fa-database"></i>
+          </a>
+          <br>
+          <text>Linux</text>
+        </div>
+
+        <div class="profilePanel">
+          <a class="orange icon" onclick="launch('Torrents')">
+            <i class="fas fa-skull-crossbones"></i>
+          </a>
+          <br>
+          <text>Torrents</text>
+        </div>
+
+        <div class="profilePanel">
+          <a class="lightGray icon" onclick="openProfileManager()">
+            <i class="fab fa-cog"></i>
+          </a>
+          <br>
+          <text>Profile<br>Manager</text>
+        </div>
+
+      </div>
+
+    </div>
+
+    <script>
+      function unavailable() {
+          window.alert('Profile currently unavailable.');
+      }
+
+      function _getBaseUrl() {
+          return window.location.origin;
+      }
+
+      function _sendHttpRequest(url) {
+          fetch(url, {
+              method: 'PUT'
+          });
+      }
+
+      function launch(profileId) {
+          const baseUrl = _getBaseUrl();
+          _sendHttpRequest(`${baseUrl}/profiles/${profileId}/launch`);
+      }
+
+      function openProfileManager() {
+          const baseUrl = _getBaseUrl();
+          _sendHttpRequest(`${baseUrl}/profileManager/launch`);
+      }
+
+    </script>
+  </body>
+</html>

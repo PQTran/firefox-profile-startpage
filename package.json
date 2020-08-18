@@ -1,0 +1,27 @@
+{
+  "name": "firefox-profile-startpage",
+  "version": "1.0.0",
+  "description": "Display common firefox profiles to open",
+  "main": "./app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pqtran/firefox-profile-startpage.git"
+  },
+  "keywords": [
+    "startpage",
+    "nodejs",
+    "firefox"
+  ],
+  "author": "pqtran",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pqtran/firefox-profile-startpage/issues"
+  },
+  "homepage": "https://github.com/pqtran/firefox-profile-startpage#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

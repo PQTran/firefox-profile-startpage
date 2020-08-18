@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=firefox-profile-startpage
+Comment=Open Firefox profile startpage
+Icon=/home/pqtran/.local/share/icons/firefox-profile-startpage/64x64/apps/64x64.png
+Exec=bash /home/pqtran/Git/firefox-profile-startpage/startup.sh --class Startpage
+Categories=Custom Applications
+StartupWMClass=Startpage

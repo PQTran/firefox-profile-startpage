@@ -10,7 +10,7 @@ const port = 3000;
 const app = express();
 app.use(express.static('public'));
 
-const startpageProfile = 'Development';
+const startpageProfile = 'firefox-profile-startpage';
 let firefoxProcess = null;
 
 function killNodeProcess() {

@@ -58,7 +58,8 @@ app.use('/profiles/:profileId/launch', (req, res) => {
 
 app.use('/profileManager/launch', (req, res) => {
     launchFirefoxProfileManager();
-    res.end();
+
+    killNodeProcess();
 });
 
 app.listen(port, () => {
